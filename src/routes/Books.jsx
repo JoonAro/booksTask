@@ -16,7 +16,7 @@ import {
 function Books() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  //if there is no books yet it will get books
   useEffect(() => {
     if (books.length === 0) {
       getBooks();

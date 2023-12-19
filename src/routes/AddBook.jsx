@@ -12,7 +12,7 @@ import { DateField } from '@mui/x-date-pickers/DateField';
 import useAxios from '../services/useAxios';
 import { bookGenres } from '../genres';
 import { Stack, Typography } from '@mui/material';
-
+//adds a new book using setBook, adds a rating to that book with setRateValue, alerts when book is added
 function AddBook() {
   const { alert, post } = useAxios('http://localhost:3001');
   const [rateValue, setRateValue] = useState(3);
@@ -25,7 +25,7 @@ function AddBook() {
     end: null,
     stars: null,
   });
-
+  //changes the genre of the book by spreading the book object 
   const genreChangeHandler = (event) => {
     const { value } = event.target;
     setBook({
@@ -33,7 +33,7 @@ function AddBook() {
       genres: typeof value === 'string' ? value.split(',') : value,
     });
   };
-
+  //changes the rating of the book and sets (stars: value)
   const rateChangeHandler = (event) => {
     const { value } = event.target;
     setBook({
@@ -41,7 +41,7 @@ function AddBook() {
       stars: value,
     });
   };
-
+  // changes books value in two ways if type of checkbox and name is completed
   const addBookHandler = (e) => {
     const { name, value, checked, type } = e.target;
     if (type === 'checkbox' && name === 'completed') {
@@ -50,7 +50,7 @@ function AddBook() {
       setBook({ ...book, [name]: value });
     }
   };
-
+  //handles the new book. adds book into /books
   function postHandler() {
     post('books', book);
   }
