@@ -4,7 +4,9 @@
 
    - **User Story**: As a developer, I want to have clear comments on each function, so that I can understand the codebase more quickly and maintain it efficiently.
    - **Task**: Add descriptive comments to each function across the codebase to enhance readability and facilitate easier maintenance.
-
+/* .filter((book) => {
+              book.name
+            }) */
 2. **Ticket #102 - Refactor Books.js to Use Custom Hook**
 
    - **User Story**: As a developer, I want to use the `useAxios` custom hook in `Books.js` to streamline HTTP requests, ensuring a consistent approach to data fetching.
