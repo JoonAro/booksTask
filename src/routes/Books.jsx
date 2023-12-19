@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import useAxios from '../services/useAxios';
 import {
   Box,
   Card,
@@ -14,31 +14,26 @@ import {
 } from '@mui/material';
 
 function Books() {
-  const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data, loading, get } = useAxios('http://localhost:3000');
+
   //if there is no books yet it will get books
   useEffect(() => {
-    if (books.length === 0) {
+    if (data.length === 0) {
       getBooks();
+
     }
   }, []);
 
   // TODO: Replace axios with useAxios hook
-  async function getBooks() {
-    try {
-      const response = await axios.get('http://localhost:3000/books');
-      setBooks(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
+  function getBooks() {
+    get('books')
   }
 
   // TODO: Implement search functionality
   return (
     <Box sx={{ mx: 'auto', p: 2 }}>
-      {isLoading && <CircularProgress />}
-      {!isLoading && (
+      {loading && <CircularProgress />}
+      {!loading && (
         <div>
           <Stack
             sx={{ justifyContent: 'space-around' }}
@@ -47,7 +42,7 @@ function Books() {
             useFlexGap
             flexWrap="wrap"
           >
-            {books.map((book) => (
+            {data.map((book) => (
               <Card
                 sx={{
                   display: 'flex',
