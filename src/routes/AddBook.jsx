@@ -51,7 +51,9 @@ function AddBook() {
     }
   };
   //handles the new book. adds book into /books
-  function postHandler() {
+
+  function postHandler(event) {
+    //prevent default event
     post('books', book);
   }
 

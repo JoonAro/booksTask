@@ -16,7 +16,7 @@
 
    - **User Story**: As a user, I want to search for books by title, author, or genre, so that I can find specific books more easily in the application.
    - **Task**: Add a search feature in `Books.js` to enable users to filter and find books based on various criteria.
-
+book.name.toLowerCase().startsWith(search.toLowerCase())
 4. **Ticket #104 - Fix Message Display Timing in AddBook.js**
 
    - **User Story**: As a user, I want to clearly see success or error messages for a sufficient amount of time, so that I can understand the outcome of my actions.

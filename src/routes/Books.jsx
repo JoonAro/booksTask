@@ -17,9 +17,10 @@ import {
 function Books() {
   const { data, loading, get } = useAxios('http://localhost:3000');
   const [search, setSearch] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState(data);
   //if there is no books yet it will get books
   useEffect(() => {
-    if (data.length === 0) {
+    if (Array.isArray(data) && data.length === 0) {
       getBooks();
 
     }
@@ -31,8 +32,19 @@ function Books() {
   }
 
   // TODO: Implement search functionality
-  const searchHandler = (e) => {
+  /* const searchHandler = (e) => {
     setSearch(e.target.value);
+  } */
+  const searchHandler = (e) => {
+    const searchTerm = e.target.value;
+    setSearch(searchTerm)
+    const filteredItems = data.filter((user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    console.log(filteredItems);
+
+    setFilteredSearch(filteredItems);
   }
   return (
     <Box sx={{ mx: 'auto', p: 2 }}>
@@ -57,9 +69,6 @@ function Books() {
             flexWrap="wrap"
           >
             {data
-              .filter((book) =>
-                book.name.toLowerCase().startsWith(search.toLowerCase())
-              )
 
               .map((book) => (
                 <Card
