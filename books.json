@@ -86,78 +86,31 @@
       "id": 6
     },
     {
-      "author": "ddd",
-      "name": "eee",
+      "author": "klklklklklkk",
+      "name": "sllklk",
       "genres": [
-        "Mystery"
+        "Business"
       ],
       "completed": false,
       "start": null,
       "end": null,
       "stars": null,
-      "img": "",
+      "img": "https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "id": 7
     },
     {
-      "author": "asdfadfs",
-      "name": "asdasdf",
+      "author": "lkiiiiiliiioioi",
+      "name": "klkkklkl",
       "genres": [
-        "Fiction"
+        "Romance",
+        "Science Fiction"
       ],
       "completed": false,
-      "start": "12/01/9",
+      "start": null,
       "end": null,
-      "stars": "5",
+      "stars": null,
+      "img": "https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "id": 8
-    },
-    {
-      "author": "eee",
-      "name": "fff",
-      "genres": [
-        "Biography"
-      ],
-      "completed": false,
-      "start": null,
-      "end": null,
-      "stars": null,
-      "id": 9
-    },
-    {
-      "author": "aaaaasdfas",
-      "name": "lalala",
-      "genres": [
-        "Biography"
-      ],
-      "completed": true,
-      "start": "02/23/2",
-      "end": "02/02/4",
-      "stars": "5",
-      "id": 10
-    },
-    {
-      "author": "afdfdaadf",
-      "name": "fdfdfas",
-      "genres": [
-        "Fiction"
-      ],
-      "completed": false,
-      "start": null,
-      "end": null,
-      "stars": "4",
-      "id": 11
-    },
-    {
-      "author": "sdafafsd",
-      "name": "afddafs",
-      "genres": [
-        "Mystery"
-      ],
-      "completed": false,
-      "start": null,
-      "end": null,
-      "stars": null,
-      "img": "asfd",
-      "id": 12
     }
   ]
 }

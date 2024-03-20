@@ -31,7 +31,6 @@ function Books() {
       getBooks();
     }
     else {
-
       setFilteredSearch(data);
     }
   }, []);
@@ -40,7 +39,7 @@ function Books() {
   function getBooks() {
     get('books')
   }
-
+  console.log(data);
   // TODO: Implement search functionality
   /* const searchHandler = (e) => {
     setSearch(e.target.value);

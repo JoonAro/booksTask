@@ -24,6 +24,7 @@ function AddBook() {
     start: null,
     end: null,
     stars: null,
+    img: ''
   });
   //changes the genre of the book by spreading the book object 
   const genreChangeHandler = (event) => {
@@ -44,18 +45,24 @@ function AddBook() {
   // changes books value in two ways if type of checkbox and name is completed
   const addBookHandler = (e) => {
     const { name, value, checked, type } = e.target;
+    console.log(e.target);
     if (type === 'checkbox' && name === 'completed') {
       setBook({ ...book, [name]: checked });
-    } else {
+    }
+    else {
       setBook({ ...book, [name]: value });
     }
   };
-  //handles the new book. adds book into /books
 
-  function postHandler(event) {
+  async function postHandler(event) {
     event.preventDefault();
-    //prevent default event
-    post('books', book);
+    let bookCopy = { ...book };
+    if (bookCopy.img === '') {
+      bookCopy = { ...bookCopy, img: "https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+      setBook(bookCopy);
+    }
+    await post('books', bookCopy);
+
   }
 
   return (
