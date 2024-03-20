@@ -16,16 +16,26 @@ import {
 
 function Books() {
   const { data, loading, get } = useAxios('http://localhost:3000');
+  const [filteredSearch, setFilteredSearch] = useState('');
   const [search, setSearch] = useState("");
-  const [filteredSearch, setFilteredSearch] = useState(data);
+  const booksToShow = search.trim() === '' ? data : filteredSearch;
+  /* const [search, setSearch] = useState({
+    title: "",
+    author: "",
+    genre: ""
+  }); */
+
   //if there is no books yet it will get books
   useEffect(() => {
     if (Array.isArray(data) && data.length === 0) {
       getBooks();
+    }
+    else {
 
+      setFilteredSearch(data);
     }
   }, []);
-
+  //[] runs the function once
   // TODO: Replace axios with useAxios hook
   function getBooks() {
     get('books')
@@ -68,56 +78,54 @@ function Books() {
             useFlexGap
             flexWrap="wrap"
           >
-            {data
-
-              .map((book) => (
-                <Card
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '15%',
-                    minWidth: 200,
-                  }}
-                  key={book.name}
-                >
-                  <CardMedia
-                    sx={{ height: 250 }}
-                    image={book.img}
-                    title={book.name}
-                  />
-                  <Box sx={{ pt: 2, pl: 2 }}>
-                    {book.genres.map((genre, i) => (
-                      <Chip
-                        key={i}
-                        label={genre}
-                        variant="outlined"
-                        size="small"
-                      />
-                    ))}
-                    <Typography variant="h6" component="h2" sx={{ mt: 2 }}>
-                      {book.name}
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                      {book.author}
-                    </Typography>
-                  </Box>
-                  <CardActions
-                    sx={{
-                      justifyContent: 'space-between',
-                      mt: 'auto',
-                      pl: 2,
-                    }}
-                  >
-                    <Rating
-                      name="read-only"
-                      value={book.stars}
-                      readOnly
+            {booksToShow.map((book) => (
+              <Card
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '15%',
+                  minWidth: 200,
+                }}
+                key={book.name}
+              >
+                <CardMedia
+                  sx={{ height: 250 }}
+                  image={book.img}
+                  title={book.name}
+                />
+                <Box sx={{ pt: 2, pl: 2 }}>
+                  {book.genres.map((genre, i) => (
+                    <Chip
+                      key={i}
+                      label={genre}
+                      variant="outlined"
                       size="small"
                     />
-                    <Button size="small">Learn More</Button>
-                  </CardActions>
-                </Card>
-              ))}
+                  ))}
+                  <Typography variant="h6" component="h2" sx={{ mt: 2 }}>
+                    {book.name}
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    {book.author}
+                  </Typography>
+                </Box>
+                <CardActions
+                  sx={{
+                    justifyContent: 'space-between',
+                    mt: 'auto',
+                    pl: 2,
+                  }}
+                >
+                  <Rating
+                    name="read-only"
+                    value={book.stars}
+                    readOnly
+                    size="small"
+                  />
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </Card>
+            ))}
           </Stack>
         </div>
       )}
