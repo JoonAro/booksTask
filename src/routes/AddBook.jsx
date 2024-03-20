@@ -14,7 +14,7 @@ import { bookGenres } from '../genres';
 import { Stack, Typography } from '@mui/material';
 //adds a new book using setBook, adds a rating to that book with setRateValue, alerts when book is added
 function AddBook() {
-  const { alert, post } = useAxios('http://localhost:3001');
+  const { alert, post } = useAxios('http://localhost:3000');
   const [rateValue, setRateValue] = useState(3);
   const [book, setBook] = useState({
     author: '',
@@ -53,6 +53,7 @@ function AddBook() {
   //handles the new book. adds book into /books
 
   function postHandler(event) {
+    event.preventDefault();
     //prevent default event
     post('books', book);
   }
